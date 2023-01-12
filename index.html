@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <link rel="stylesheet" href="index.css">
+    
+</head>
+<body>
+    <h2> DOM </h2>
+    <h2>Question 1 :</h2>
+    <p>Write the code to access element which is having id as "text"</p>
+    <p id="text">this is a text</p>
+    <script>
+        const tstid = document.getElementById("text");
+        console.log(tstid);
+    </script>
+    <pre>
+        const tstid = document.getElementById("text");
+        console.log(tstid);
+    </pre>
+
+    <h2>Question 2 :</h2>
+    <p>Write the code to access element which is having tag as "h1"</p>
+    <!-- <h1>hello Students</h1> -->
+    <script>
+        const tsttag = document.getElementsByTagName("h1");
+        console.log(tsttag);
+    </script>
+    <pre>
+        const tsttag = document.getElementsByClassName("h1");
+        console.log(tsttag);
+    </pre>
+   
+    <h2>Question 3 :</h2>
+    <p>Write the code to access element which is having class as "box"</p>
+    <p class="box"> this is a msg box</p>
+    <script>
+        const tstclass = document.getElementsByClassName("box");
+        console.log(tstclass);
+    </script>
+    <pre>
+        const tstclass = document.getElementsByClassName("box");
+        console.log(tstclass);
+    </pre>
+
+    <h2>Question 4 :</h2>
+    <p>Change the heading from ""Hello"" to ""Hello World"" using DOM functions</p>
+    <h1 id="demo">Hello</h1>
+    <script>
+        document.getElementById("demo").innerHTML = "Hello World";
+    </script>
+    <pre>
+        document.getElementById("demo").innerHTML = "Hello World";
+    </pre>
+    
+    <h2>Question 5 :</h2>
+    <p>Create three cards on HTML page and arrange them using flex property in row or horizontal <br>
+        direction and also create button at the bottom named "Change Flex direction". When user clicks <br>
+        on this button, the cards arrangement should be changed to vertical direction.</p>
+
+        <pre>
+             function myFunction() {
+             document.getElementById("main").style.flexDirection = "column-reverse";
+            }
+        </pre>
+
+  <div id="main">
+    <div style="background-color:coral;">1</div>
+    <div style="background-color:rgb(72, 213, 183);">2</div>
+    <div style="background-color:rgb(240, 54, 135);">3</div>
+  </div>
+  
+  <button onclick="myFunction()">Change Flex direction</button>
+  <script>
+  function myFunction() {
+    document.getElementById("main").style.flexDirection = "column-reverse";
+  }
+  </script>
+
+    <h2>Question 6 :</h2>
+    <p>Whats the difference between window vs document?</p>
+
+    <pre>
+        <b style="color: blueviolet;">Window</b>
+        The window is the first thing that gets loaded into the browser. This window object has the majority of the 
+        properties like length, innerWidth, innerHeight, name, if it has been closed, its parents, and more.
+
+        <b style="color: blueviolet;">Document</b>
+        The document object is your html will be loaded into the browser. The document actually gets loaded inside the window 
+        object and has properties available to it like title, URL, cookie, etc. That means if you want to access a 
+        property for the window it is window.property, if it is document it is window.document.property which is also 
+        available in short as document.property.
+    </pre>
+    
+    <h2>Question 7 :</h2>
+    <p> h1 Hello h1 Add one style attribute and give text color as red and id attribute and give the id value as <br>
+        ""heading"" in the above given h1 tag using DOM functions</p>
+    <div id="myDIV" ></div>
+
+    <script>
+        const para = document.createElement("h1");
+        para.innerHTML = "Hello";
+        document.getElementById("myDIV").appendChild(para);
+        para.style.color="red";
+        let heading = document.getElementsByTagName("h1")[0].id;
+    </script>
+
+    <h2>Question 8 :</h2>
+
+    <p>Create an HTML page having content as Hello world and a button named Replace Text. When user will click on this <br>
+         button page content should be changed to "Welcome to Elevation academy"</p>
+
+         <input onclick="click()" type="button" value="Hello world" id="btn"></input>
+    <script>    
+        function click() {
+            if (this.value=="Hello world") this.value = "Hello world";
+            else this.value = "Welcome to Elevation academy";
+        }
+    </script>
+   
+    <h2>Question 9 :</h2>
+    <p>Write code to implement timer clock using JS -- display HH:MM:SS -- the time should keep updating every second</p>
+
+    <div id = "clock" onload="currentTime()"></div>
+    <script>
+        function currentTime() {
+    let date = new Date(); 
+    let hh = date.getHours();
+    let mm = date.getMinutes();
+    let ss = date.getSeconds();
+    let session = "AM";
+  
+    if(hh === 0){
+        hh = 12;
+    }
+    if(hh > 12){
+        hh = hh - 12;
+        session = "PM";
+     }
+  
+     hh = (hh < 10) ? "0" + hh : hh;
+     mm = (mm < 10) ? "0" + mm : mm;
+     ss = (ss < 10) ? "0" + ss : ss;
+      
+     let time = hh + ":" + mm + ":" + ss + " " + session;
+  
+    document.getElementById("clock").innerText = time; 
+    let t = setTimeout(function(){ currentTime() }, 1000);
+  }
+  currentTime();
+    </script>
+
+    <h2>Question 10 :</h2>
+    <p>Create a select drop down for selecting Year 20-21, 21-22 etc. Print the item text selected</p>
+
+    <select id="select1" onchange="getOption()">
+        <option value="20-21">20-21</option>
+        <option value="21-22">21-22</option>
+        <option value="22-23">22-23</option>
+    </select>
+</p>
+<p> selecting Year: 
+    <span class="output" style="color: aliceblue;"></span>
+</p>
+
+<!-- <button onclick="getOption()"> Check option </button>
+<script type="text/javascript"> -->
+<script>
+function getOption() {
+    selectElement = document.querySelector('#select1');
+    output = selectElement.value;
+    document.querySelector('.output').textContent = output;
+}
+</script>
+    <script src="index.js"></script>
+</body>
+</html>
